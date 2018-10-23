@@ -4,29 +4,29 @@
 	<!-- Output some debug strings -->
 	<item name="debug_output" type="bool">true</item>
 
-	<!-- Property to read for ROM version -->
-	<string name="property_version">ro.omni.version</string>
+	<!-- Property to read for ROM version (for example "P-x2-20181014") -->
+	<string name="property_version">ro.baikalos.ota.version</string>
 
-	<!-- Property to read for device identifier -->
-	<string name="property_device">ro.omni.device</string>
+	<!-- Property to read for device identifier (for example "zl1" for Le Pro 3) -->
+	<string name="property_device">ro.baikalos.device</string>
 
 	<!-- %s is expanded to property_version value. .zip, .delta, .update, .sign extensions added when needed -->
-	<string name="filename_base">omni-%s</string>
+	<string name="filename_base">Baikal-OS-%s</string>
 
 	<!-- Path deltas are stored, relative to sdcard root -->
-	<string name="path_base">OpenDelta</string>
+	<string name="path_base">BaikalOTA</string>
 
 	<!-- URL base to find .delta files, %s is expanded to property_device value. Path is suffixed by (expanded) filename_base -->
-	<string name="url_base_delta">http://delta.nixadm.ru/omni9/publish/%s/</string>
+	<string name="url_base_delta">https://delta.baikalos.ru/baikal9/publish/%s/</string>
 
 	<!-- URL base to find .update and .sign files, %s is expanded to property_device value. Path is suffixed by (expanded) filename_base -->
-	<string name="url_base_update">http://delta.nixadm.ru/omni9/publish/%s/</string>
+	<string name="url_base_update">https://delta.baikalos.ru/baikal9/publish/%s/</string>
 
 	<!-- URL base to find the full zip files, %s is expanded to property_device value. Path is suffixed by (expanded) filename_base -->
-	<string name="url_base_full">http://dl.nixadm.ru/omni-9-%s/</string>
+	<string name="url_base_full">https://dl.baikalos.ru/%s/</string>
 
 	<!-- URL base to fetch all builds -->
-	<string name="url_base_json">http://dl.nixadm.ru/json.php"</string>
+	<string name="url_base_json">https://dl.baikalos.ru/json.php"</string>
 
 	<!-- Applies whole-file signature delta. Adds one extra delta step. Required if recovery verifies signatures -->
 	<item name="apply_signature" type="bool">false</item>
