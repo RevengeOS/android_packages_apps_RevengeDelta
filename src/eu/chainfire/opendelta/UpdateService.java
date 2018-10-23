@@ -944,7 +944,9 @@ OnWantUpdateCheckListener, OnSharedPreferenceChangeListener {
             long latestTimestamp = 0;
             while (nextKey.hasNext()) {
                 String key = nextKey.next();
-                if (key.equals("./" + config.getDevice())) {
+                String path_to = new URL(config.getUrlBaseFull()).getPath().replaceFirst("\\/$","");
+                Logger.d("Path to: " + path_to);
+                if (key.equals("." + path_to)) {
                     JSONArray builds = object.getJSONArray(key);
                     for (int i = 0; i < builds.length(); i++) {
                         JSONObject build = builds.getJSONObject(i);
