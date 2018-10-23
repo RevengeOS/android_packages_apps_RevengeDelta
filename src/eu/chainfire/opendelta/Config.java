@@ -299,9 +299,7 @@ public class Config {
     }
 
     public boolean isOfficialVersion() {
-        return getVersion().indexOf(official_version_tag) != -1 ||
-                getVersion().indexOf(weekly_version_tag) != -1 ||
-                getVersion().indexOf(security_version_tag) != -1;
+        return true;
     }
 
     public String getAndroidVersion() {
