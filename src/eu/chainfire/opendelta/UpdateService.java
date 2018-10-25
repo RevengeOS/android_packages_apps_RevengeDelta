@@ -911,15 +911,7 @@ OnWantUpdateCheckListener, OnSharedPreferenceChangeListener {
     private boolean isMatchingImage(String fileName) {
         try {
             if(fileName.endsWith(".zip") && fileName.indexOf(config.getDevice()) != -1) {
-                String[] parts = fileName.split("-");
-                if (parts.length > 1) {
-                    String version = parts[1];
-                    Version current = new Version(config.getAndroidVersion());
-                    Version fileVersion = new Version(version);
-                    if (fileVersion.compareTo(current) >= 0) {
-                        return true;
-                    }
-                }
+                return true;
             }
         } catch (Exception e) {
             Logger.ex(e);
