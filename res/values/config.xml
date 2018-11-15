@@ -14,13 +14,13 @@
 	<string name="filename_base">Baikal-OS-%s</string>
 
 	<!-- Path deltas are stored, relative to sdcard root -->
-	<string name="path_base">BaikalOTA</string>
+	<string name="path_base">OpenDelta</string>
 
 	<!-- URL base to find .delta files, %s is expanded to property_device value. Path is suffixed by (expanded) filename_base -->
-	<string name="url_base_delta">https://delta.baikalos.ru/baikal9/publish/%s/</string>
+	<string name="url_base_delta">https://delta.baikalos.ru/%s/</string>
 
 	<!-- URL base to find .update and .sign files, %s is expanded to property_device value. Path is suffixed by (expanded) filename_base -->
-	<string name="url_base_update">https://delta.baikalos.ru/baikal9/publish/%s/</string>
+	<string name="url_base_update">https://delta.baikalos.ru/%s/</string>
 
 	<!-- URL base to find the full zip files, %s is expanded to property_device value. Path is suffixed by (expanded) filename_base -->
 	<string name="url_base_full">https://dl.baikalos.ru/%s/</string>
