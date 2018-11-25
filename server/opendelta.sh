@@ -17,19 +17,19 @@ fi
 
 # ------ CONFIGURATION ------
 
-HOME=/home/build
+HOME=~/
 
 BIN_JAVA=java
 BIN_MINSIGNAPK=$HOME/delta/minsignapk.jar
 BIN_XDELTA=$HOME/delta/xdelta3
 BIN_ZIPADJUST=$HOME/delta/zipadjust
 
-FILE_MATCH=omni-*.zip
-PATH_CURRENT=$HOME/omni/out/target/product/$DEVICE
+FILE_MATCH=REVENGEOS-*.zip
+PATH_CURRENT=$HOME/ros/out/target/product/$DEVICE
 PATH_LAST=$HOME/delta/last/$DEVICE
 
-KEY_X509=$HOME/.keys/platform.x509.pem
-KEY_PK8=$HOME/.keys/platform.pk8
+KEY_X509=$HOME/delta/keys/platform.x509.pem
+KEY_PK8=$HOME/delta/keys/platform.pk8
 
 # ------ PROCESS ------
 
