@@ -5,28 +5,28 @@
 	<item name="debug_output" type="bool">true</item>
 
 	<!-- Property to read for ROM version (for example "P-x2-20181014") -->
-	<string name="property_version">ro.baikalos.ota.version</string>
+	<string name="property_version">ro.ota.revengeos.version</string>
 
 	<!-- Property to read for device identifier (for example "zl1" for Le Pro 3) -->
-	<string name="property_device">ro.baikalos.device</string>
+	<string name="property_device">ro.revengeos.device</string>
 
 	<!-- %s is expanded to property_version value. .zip, .delta, .update, .sign extensions added when needed -->
-	<string name="filename_base">Baikal-OS-%s</string>
+	<string name="filename_base">REVENGEOS-%s</string>
 
 	<!-- Path deltas are stored, relative to sdcard root -->
-	<string name="path_base">OpenDelta</string>
+	<string name="path_base">REVENGEOTA</string>
 
 	<!-- URL base to find .delta files, %s is expanded to property_device value. Path is suffixed by (expanded) filename_base -->
-	<string name="url_base_delta">https://delta.baikalos.ru/%s/</string>
+	<string name="url_base_delta">https://ota.revengeos.com/delta/%s/</string>
 
 	<!-- URL base to find .update and .sign files, %s is expanded to property_device value. Path is suffixed by (expanded) filename_base -->
-	<string name="url_base_update">https://delta.baikalos.ru/%s/</string>
+	<string name="url_base_update">https://ota.revengeos.com/delta/%s/</string>
 
 	<!-- URL base to find the full zip files, %s is expanded to property_device value. Path is suffixed by (expanded) filename_base -->
-	<string name="url_base_full">https://dl.baikalos.ru/%s/</string>
+	<string name="url_base_full">https://ota.revengeos.com/%s/</string>
 
 	<!-- URL base to fetch all builds -->
-	<string name="url_base_json">https://dl.baikalos.ru/json.php"</string>
+	<string name="url_base_json">https://ota.revengeos.com/json.php"</string>
 
 	<!-- Applies whole-file signature delta. Adds one extra delta step. Required if recovery verifies signatures -->
 	<item name="apply_signature" type="bool">false</item>
@@ -54,8 +54,8 @@
 		<item>i777</item>
 	</string-array>
 
-	<string name="official_version_tag">HOMEMADE</string>
-	<string name="weekly_version_tag">WEEKLY</string>
+	<string name="official_version_tag">OFFICIAL</string>
+	<string name="weekly_version_tag">OFFICIAL</string>
 	<string name="security_version_tag">SECURITY_RELEASE</string>
 
 	<string name="android_version">ro.build.version.release</string>
