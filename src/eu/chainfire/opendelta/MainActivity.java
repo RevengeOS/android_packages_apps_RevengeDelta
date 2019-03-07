@@ -1,6 +1,7 @@
 /* 
  * Copyright (C) 2013-2014 Jorrit "Chainfire" Jongma
  * Copyright (C) 2013-2015 The OmniROM Project
+ * Copyright (C) 2018-2019 Revenge OS
  */
 /* 
  * This file is part of OpenDelta.
@@ -67,16 +68,13 @@ public class MainActivity extends Activity {
     private Button buildNow = null;
     private ImageButton stopNow = null;
     private Button rebootNow = null;
-    private TextView currentVersion = null;
     private TextView lastChecked = null;
     private TextView lastCheckedHeader = null;
-    private TextView downloadSizeHeader = null;
     private TextView downloadSize = null;
     private Config config;
     private boolean mPermOk;
     private TextView mSub2;
     private TextView mProgressPercent;
-    private ImageView mOmniLogo;
     private View mProgressEndSpace;
     private int mProgressCurrent = 0;
     private int mProgressMax = 1;
@@ -97,7 +95,8 @@ public class MainActivity extends Activity {
             // its icon
             Logger.ex(e);
         }
-        getActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP | ActionBar.DISPLAY_SHOW_TITLE);
+        getActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP);
+        getActionBar().setElevation(0);
 
         UpdateService.start(this);
 
@@ -114,13 +113,11 @@ public class MainActivity extends Activity {
         extra = (TextView) findViewById(R.id.text_extra);
         buildNow = (Button) findViewById(R.id.button_build_delta);
         stopNow = (ImageButton) findViewById(R.id.button_stop);
-        currentVersion = (TextView) findViewById(R.id.text_current_version);
         lastChecked = (TextView) findViewById(R.id.text_last_checked);
+        getActionBar().setElevation(0);
         lastCheckedHeader = (TextView) findViewById(R.id.text_last_checked_header);
         downloadSize = (TextView) findViewById(R.id.text_download_size);
-        downloadSizeHeader = (TextView) findViewById(R.id.text_download_size_header);
         mProgressPercent = (TextView) findViewById(R.id.progress_percent);
-        mOmniLogo = (ImageView) findViewById(R.id.omni_logo);
         mProgressEndSpace = findViewById(R.id.progress_end_margin);
 
         config = Config.getInstance(this);
@@ -265,7 +262,6 @@ public class MainActivity extends Activity {
 
                 extraText = getString(R.string.error_disk_space_sub, current,
                         total);
-                DrawableCompat.setTint(mOmniLogo.getDrawable(), ContextCompat.getColor(context, R.color.logo_err));
             } else if (UpdateService.STATE_ERROR_UNKNOWN.equals(state)) {
                 enableCheck = true;
                 progress.setIndeterminate(false);
@@ -275,12 +271,10 @@ public class MainActivity extends Activity {
                 title = getString(R.string.state_error_not_official_title);
                 extraText = getString(R.string.state_error_not_official_extra,
                         intent.getStringExtra(UpdateService.EXTRA_FILENAME));
-                DrawableCompat.setTint(mOmniLogo.getDrawable(), ContextCompat.getColor(context, R.color.logo_disabled));
             } else if (UpdateService.STATE_ERROR_DOWNLOAD.equals(state)) {
                 enableCheck = true;
                 progress.setIndeterminate(false);
                 extraText = intent.getStringExtra(UpdateService.EXTRA_FILENAME);
-                DrawableCompat.setTint(mOmniLogo.getDrawable(), ContextCompat.getColor(context, R.color.logo_err));
             } else if (UpdateService.STATE_ERROR_CONNECTION.equals(state)) {
                 enableCheck = true;
                 progress.setIndeterminate(false);
@@ -349,7 +343,6 @@ public class MainActivity extends Activity {
 
                 deltaUpdatePossible = latestDeltaZip != null;
                 fullUpdatePossible = latestFullZip != null;
-                DrawableCompat.setTint(mOmniLogo.getDrawable(), ContextCompat.getColor(context, R.color.logo_green));
 
 
                 if (deltaUpdatePossible) {
@@ -358,14 +351,12 @@ public class MainActivity extends Activity {
                     enableBuild = true;
                     updateVersion = latestDeltaBase;
                     title = getString(R.string.state_action_build_delta);
-                    DrawableCompat.setTint(mOmniLogo.getDrawable(), ContextCompat.getColor(context, R.color.logo_green));
                 } else if (fullUpdatePossible) {
                     String latestFullBase = latestFull.substring(0,
                             latestFull.lastIndexOf('.'));
                     enableBuild = true;
                     updateVersion = latestFullBase;
                     title = getString(R.string.state_action_build_full);
-                    DrawableCompat.setTint(mOmniLogo.getDrawable(), ContextCompat.getColor(context, R.color.logo_green));
                 }
                 long downloadSize = prefs.getLong(
                         UpdateService.PREF_DOWNLOAD_SIZE, -1);
@@ -454,22 +445,16 @@ public class MainActivity extends Activity {
                         }
                     }
                 }
-            }
-            MainActivity.this.title.setText(title);
+            }MainActivity.this.title.setText(title);
             MainActivity.this.sub.setText(sub);
             MainActivity.this.mSub2.setText(sub2);
             MainActivity.this.mProgressPercent.setText(progressPercent);
             MainActivity.this.updateVersion.setText(updateVersion);
-            MainActivity.this.currentVersion.setText(config.getFilenameBase());
             MainActivity.this.lastChecked.setText(lastCheckedText);
             MainActivity.this.lastCheckedHeader
                 .setText(lastCheckedText.equals("") ? "" : getString(R.string.text_last_checked_header_title));
             MainActivity.this.extra.setText(extraText);
-            MainActivity.this.lastCheckedHeader
-                .setText(lastCheckedText.equals("") ? "" : getString(R.string.text_last_checked_header_title));
             MainActivity.this.downloadSize.setText(downloadSizeText);
-            MainActivity.this.downloadSizeHeader
-                .setText(downloadSizeText.equals("") ? "" : getString(R.string.text_download_size_header_title));
 
             mProgressCurrent = (int) current;
             mProgressMax = (int) total;

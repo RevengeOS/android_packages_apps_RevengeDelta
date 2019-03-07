@@ -2,7 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="Theme.OpenDelta" parent="@android:style/Theme.DeviceDefault.Settings">
-        <item name="android:buttonStyle">?android:attr/borderlessButtonStyle</item>
+      <item name="android:buttonStyle">?android:attr/borderlessButtonStyle</item>
     </style>
 
     <style name="Theme.OpenDelta.Settings" parent="@style/Theme.OpenDelta"></style>
