@@ -17,16 +17,16 @@
 	<string name="path_base">REVENGEOTA</string>
 
 	<!-- URL base to find .delta files, %s is expanded to property_device value. Path is suffixed by (expanded) filename_base -->
-	<string name="url_base_delta">https://mirrors.dotsrc.org/osdn/storage/g/r/re/revengeos/delta/%s/</string>
+	<string name="url_base_delta">https://ota.revengeos.com/delta/%s/</string>
 
 	<!-- URL base to find .update and .sign files, %s is expanded to property_device value. Path is suffixed by (expanded) filename_base -->
-	<string name="url_base_update">https://mirrors.dotsrc.org/osdn/storage/g/r/re/revengeos/delta/%s/</string>
+	<string name="url_base_update">https://ota.revengeos.com/delta/%s/</string>
 
 	<!-- URL base to find the full zip files, %s is expanded to property_device value. Path is suffixed by (expanded) filename_base -->
-	<string name="url_base_full">https://mirrors.dotsrc.org/osdn/storage/g/r/re/revengeos/%s/</string>
+	<string name="url_base_full">https://ota.revengeos.com/%s/</string>
 
 	<!-- URL base to fetch all builds -->
-	<string name="url_base_json">https://revengeos.herokuapp.com/files/json.php"</string>
+	<string name="url_base_json">https://ota.revengeos.com/json.php"</string>
 
 	<!-- Applies whole-file signature delta. Adds one extra delta step. Required if recovery verifies signatures -->
 	<item name="apply_signature" type="bool">false</item>
