@@ -6,4 +6,16 @@
     </style>
 
     <style name="Theme.OpenDelta.Settings" parent="@style/Theme.OpenDelta"></style>
+
+    <style name="aboutphone_title">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="aboutphone_subtitle">
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
 </resources>

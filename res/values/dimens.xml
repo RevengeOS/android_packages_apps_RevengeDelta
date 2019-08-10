@@ -9,4 +9,14 @@
 	<dimen name="button_margin">16dp</dimen>
 	<dimen name="text_margin">6dp</dimen>
 
+    <!-- about my phone -->
+    <dimen name="device_picture_width">120dp</dimen>
+    <dimen name="device_picture_height">240dp</dimen>
+    <dimen name="title_padding_top">10dp</dimen>
+    <dimen name="page_padding_left">28dp</dimen>
+    <dimen name="page_padding_right">15dp</dimen>
+    <dimen name="page_padding_top">28dp</dimen>
+    <dimen name="page_padding_bottom">28dp</dimen>
+    <dimen name="device_picture_text_separation">20dp</dimen>
+
 </resources>

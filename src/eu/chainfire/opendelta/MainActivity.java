@@ -56,6 +56,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.util.Log;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 public class MainActivity extends Activity {
     private TextView title = null;
@@ -80,7 +87,115 @@ public class MainActivity extends Activity {
     private int mProgressMax = 1;
     private boolean mProgressEnabled = false;
 
+    public static ArrayList<String> informations = new ArrayList<String>();
+    public static ArrayList<String> categories = new ArrayList<String>();
+
     private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 0;
+
+    public void parseDeviceJson() {
+        File file = new File("/system/etc/" + getSystemProperty("ro.product.device") +".json");
+        boolean category = true;
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+
+            StringBuilder lineformat = new StringBuilder();
+            StringBuilder categoryformat = new StringBuilder();
+
+            while ((line = br.readLine()) != null) {
+                for (int i = 0; i < line.length(); i++) {
+                    char c = line.charAt(i);
+                    if (c == '"') {
+                        // do nothin
+                    } else if (c == '}' || c == '{') {
+                        // do nothin
+                    } else if (c == ':') {
+                        category = false;
+                        i++;
+                    } else if (c == ',') {
+                        category = true;
+                    } else if (c == '\\') {
+                        lineformat.append('"');
+                    } else if (category == true) {
+                        if (Character.isWhitespace(c)) {
+                            //do nothin
+                        }
+                        else {
+                        categoryformat.append(c); }
+                    }
+                    else {
+                        lineformat.append(c);
+                    }
+                }
+
+                informations.add(lineformat.toString());
+                lineformat.setLength(0);
+                categories.add(categoryformat.toString());
+                categoryformat.setLength(0);
+            }
+        br.close();
+        }
+        catch (IOException e) {
+            Log.i("Setings", "catch err io");
+        }
+    }
+
+    public void setCPU(TextView cpuinfo, String category) {
+        for (int i = 0; i < categories.size(); i++) {
+            if (category.equals(categories.get(i)) == true) {
+                String cpuinfostring = informations.get(i);
+                cpuinfo.setText(cpuinfostring);
+            }
+        }
+    }
+
+    public void setRAM(TextView raminfo, String category) {
+        for (int i = 0; i < categories.size(); i++) {
+            if (category.equals(categories.get(i)) == true) {
+                String raminfostring = informations.get(i);
+                raminfo.setText(raminfostring);
+            }
+        }
+    }
+
+    public void setDISPLAY(TextView displayinfo, String category) {
+        for (int i = 0; i < categories.size(); i++) {
+            if (category.equals(categories.get(i)) == true) {
+                String displayinfostring = informations.get(i);
+                displayinfo.setText(displayinfostring);
+            }
+        }
+    }
+
+    public void setCAMERA(TextView camerainfo, String category) {
+        for (int i = 0; i < categories.size(); i++) {
+            if (category.equals(categories.get(i)) == true) {
+                String camerainfostring= informations.get(i);
+                camerainfo.setText(camerainfostring);
+            }
+        }
+    }
+
+    public void setImg(ImageView deviceimage) {
+        File imgFile = new File("/system/etc/" + getSystemProperty("ro.product.device") + ".png");
+        Bitmap imageBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+        deviceimage.setImageBitmap(imageBitmap);
+    }
+
+    public String getSystemProperty(String key) {
+        String value = null;
+
+        try {
+            value = (String) Class.forName("android.os.SystemProperties")
+                    .getMethod("get", String.class).invoke(null, key);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return value;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +234,19 @@ public class MainActivity extends Activity {
         downloadSize = (TextView) findViewById(R.id.text_download_size);
         mProgressPercent = (TextView) findViewById(R.id.progress_percent);
         mProgressEndSpace = findViewById(R.id.progress_end_margin);
+
+        TextView cpuinfo = findViewById(R.id.cpu_hardware_info_textview);
+        TextView raminfo = findViewById(R.id.ram_hardware_info_textview);
+        TextView displayinfo = findViewById(R.id.display_hardware_info_textview);
+        TextView camerainfo = findViewById(R.id.camera_hardware_info_textview);
+        ImageView deviceimage = findViewById(R.id.device_image_imageview);
+
+        parseDeviceJson();
+        setCPU(cpuinfo, "cpu");
+        setCAMERA(raminfo, "ram");
+        setDISPLAY(displayinfo, "display");
+        setCAMERA(camerainfo, "camera");
+        setImg(deviceimage);
 
         config = Config.getInstance(this);
         mPermOk = false;

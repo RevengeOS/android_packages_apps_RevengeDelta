@@ -123,4 +123,14 @@
     <string name="progress_status_8">Attempting Rollback &#8230;</string>
     <string name="progress_status_9">Disabled.</string>
 
+    <!-- about my phone -->
+    <string name="cpu_title">CPU</string>
+    <string name="cpu_info">unknown</string>
+    <string name="ram_title">RAM</string>
+    <string name="ram_info">unknown</string>
+    <string name="display_title">DISPLAY</string>
+    <string name="display_info">unknown</string>
+    <string name="camera_title">CAMERA</string>
+    <string name="camera_info">unknown</string>
+
 </resources>

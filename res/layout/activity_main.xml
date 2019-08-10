@@ -11,17 +11,103 @@
         android:layout_height="wrap_content"
         android:background="?android:attr/colorPrimary"
         android:orientation="horizontal">
-      
-        <ImageView
-            android:id="@+id/cloud_outline"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="75dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/cloud_outline"/>
 
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/page_padding_top"
+            android:paddingLeft="@dimen/page_padding_left"
+            android:paddingRight="@dimen/page_padding_right"
+            android:paddingBottom="@dimen/page_padding_bottom"
+            android:gravity="start|center_horizontal"
+            android:background="?android:attr/colorPrimary"
+            android:orientation="horizontal">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/device_image_imageview"
+                    android:layout_width="@dimen/device_picture_width"
+                    android:layout_height="@dimen/device_picture_height" />
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/device_picture_text_separation"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/aboutphone_title"
+                android:text="@string/cpu_title"
+                android:autoLink="all"/>
+
+            <TextView
+                android:id="@+id/cpu_hardware_info_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/aboutphone_subtitle"
+                android:text="@string/cpu_info"
+                android:autoLink="all"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/title_padding_top"
+                style="@style/aboutphone_title"
+                android:text="@string/ram_title"
+                android:autoLink="all"/>
+
+            <TextView
+                android:id="@+id/ram_hardware_info_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/aboutphone_subtitle"
+                android:text="@string/ram_info"
+                android:autoLink="all"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/title_padding_top"
+                style="@style/aboutphone_title"
+                android:text="@string/display_title"
+                android:autoLink="all"/>
+
+            <TextView
+                android:id="@+id/display_hardware_info_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/aboutphone_subtitle"
+                android:text="@string/display_info"
+                android:autoLink="all"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/title_padding_top"
+                style="@style/aboutphone_title"
+                android:text="@string/camera_title"
+                android:autoLink="all"/>
+
+            <TextView
+                android:id="@+id/camera_hardware_info_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/aboutphone_subtitle"
+                android:text="@string/camera_info"
+                android:autoLink="all"/>
+
+            </LinearLayout>
+        </LinearLayout>
     </RelativeLayout>
 
     <LinearLayout
